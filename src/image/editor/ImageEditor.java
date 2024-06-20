@@ -70,5 +70,34 @@ public class ImageEditor {
         }
 
     }
+    public static int[][] invertImage(int[][] imageTwoD){
+        
+        int[][] invertedImage = new int[imageTwoD.length][imageTwoD[0].length];
+        
+        for(int i=0; i<imageTwoD.length; i++){
+            for(int j=0; j<imageTwoD[0].length; j++){
+                
+                invertedImage[i][j] = imageTwoD[(imageTwoD.length-1) - i][(imageTwoD[0].length-1) - j];
+            }
+        }
+        
+        return invertedImage;
+    }
+    
+    public static String pathModifier(String input){
+        
+        char[] inputChar = input.toCharArray();
+                StringBuilder sb = new StringBuilder();
+                sb.append(input);
+                for(int i=inputChar.length-1; i>=0; i--){
+                    if(inputChar[i] == ('\\')){
+                        break;
+                    }
+                    sb.deleteCharAt(i);
+                }
+                inputChar = sb.toString().toCharArray();
+                String finalLocation = String.valueOf(inputChar);
+                return finalLocation;
+    }
 
 }
