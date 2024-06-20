@@ -66,10 +66,40 @@ public class ImageEditor {
                 int[][] invertedImage = invertImage(imageData);
                 MainProcesses.twoDToImage(invertedImage, finalLocation.concat("inverted.jpg"));
                 break;
-
         }
-
     }
+
+public static int[][] stretchHorizontally(int[][] imageTwoD){
+        
+        int[][] stretchedImage = new int[imageTwoD.length][2*imageTwoD[0].length];
+        int pos = 0;
+        
+        for(int i=0; i<imageTwoD.length; i++){
+            for(int j=0; j<imageTwoD[0].length; j++){
+                
+                pos = j * 2;
+                stretchedImage[i][pos] = imageTwoD[i][j];
+                stretchedImage[i][pos + 1] = imageTwoD[i][j];
+            }
+        }
+        
+        return stretchedImage;
+    }
+    
+    public static int[][] shrinkVertically(int[][] imageTwoD){
+        
+        int[][] shrunkImage = new int[imageTwoD.length / 2][imageTwoD[0].length];
+        
+        for(int i=0; i<imageTwoD[0].length; i++){
+            for(int j=0; j<imageTwoD.length - 1; j+=2){
+                
+                shrunkImage[j/2][i] = imageTwoD[j][i];
+            }
+        }
+        
+        return shrunkImage;
+    }
+
 
  public static int[][] trimBorders(int[][] imageTwoD, int pixelCount){
         
@@ -117,4 +147,5 @@ public class ImageEditor {
         return negativeImage;
     }
     
+
 }
