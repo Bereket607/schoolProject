@@ -14,7 +14,7 @@ import javax.imageio.ImageIO;
 
 /**
  *
- * @author eyuel
+ *  
  */
 public class ImageEditor {
 
