@@ -70,5 +70,27 @@ public class ImageEditor {
         }
 
     }
+    public static int[] getRGBAFromPixel(int pixelColorValue){
+        
+        Color pixelColor = new Color(pixelColorValue);
+        
+        return new int[]{ pixelColor.getRed(), pixelColor.getGreen()
+                , pixelColor.getBlue(), pixelColor.getAlpha()};
+    }
+    
+    public static int getColorIntValueFromRGBA(int[] colorData){
+        
+        if(colorData.length == 4){
+            
+            Color color = new Color(colorData[0], colorData[1], 
+                    colorData[2], colorData[3]);
+            return color.getRGB();
+        }
+        else{
+            
+            System.out.println("Incorrect number of elements in RGBA array");
+            return -1;
+        }
+    }
 
 }
